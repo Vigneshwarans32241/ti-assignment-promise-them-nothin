@@ -32,7 +32,7 @@ async function waitForClusterReady() {
     for (let attempts = 0; attempts < 30; attempts++) {
       try {
         await new Promise((resolve, reject) => {
-          // nosemgrep: problem-based-packs.insecure-transport.js-node.http-request.http-request -- Localhost-only test harness driving local process benchmarks
+          // nosemgrep: problem-based-packs.insecure-transport.js-node.using-http-server.using-http-server, problem-based-packs.insecure-transport.js-node.http-request.http-request -- Localhost test harness benchmark
           const req = http.get(`http://127.0.0.1:${port}/health`, res => {
             if (res.statusCode === 200) resolve();
             else reject(new Error(`Status ${res.statusCode}`));
@@ -61,7 +61,7 @@ function sendRequest(port, customerId, customTime = null) {
       headers['X-Simulated-Time'] = customTime.toISOString();
     }
 
-    // nosemgrep: problem-based-packs.insecure-transport.js-node.http-request.http-request -- Localhost-only test harness driving local process benchmarks
+    // nosemgrep: problem-based-packs.insecure-transport.js-node.using-http-server.using-http-server, problem-based-packs.insecure-transport.js-node.http-request.http-request -- Localhost test harness benchmark
     const req = http.request({
       hostname: '127.0.0.1',
       port,
