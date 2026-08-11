@@ -54,3 +54,5 @@ I selected the **Sliding Window Counter** algorithm backed by **atomic Redis Lua
 2. **Circuit-Breaker Local Fallback:** Implement a local emergency token bucket in Node memory that activates only when Redis is unreachable, allowing tenants a minimal 10% trickle-rate quota during Redis outages rather than hard 100% fail-closed rejections.
 3. **Structured Audit Trail & Metrics:** Add Prometheus metrics counters (`rate_limit_allowed_total`, `rate_limit_rejected_total`, `rate_limit_fail_closed_total`) categorized by tenant ID for legal audit reviews.
 4. **Adaptive Client Smoothing Headers:** Return customized `Retry-After` delay jitter recommendations in 429 response headers to smooth Northwind's aggressive ERP retry loops.
+
+**Known Semgrep findings (accepted):** The scan flags HTTP-not-HTTPS in `harness.js` and missing CSRF middleware in `server.js`. Both are expected for this scope — the harness only talks to localhost test processes, and the API is stateless/header-authenticated rather than cookie/session-based, so CSRF protection doesn't apply.
