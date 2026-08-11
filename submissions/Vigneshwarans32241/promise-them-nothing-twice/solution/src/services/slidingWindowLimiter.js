@@ -99,7 +99,7 @@ async function checkRateLimit(redisClient, customerId, effectiveRpm, isBoundaryT
 
   } catch (error) {
     // FAIL-CLOSED BEHAVIOR
-    console.error(`[FAIL-CLOSED] Redis error during rate limit check for ${customerId}:`, error.message);
+    console.error('[FAIL-CLOSED] Redis error during rate limit check for %s:', customerId, error.message);
 
     return {
       allowed: false,
