@@ -1,0 +1,17 @@
+{
+  "name": "relayapi-rate-limiter",
+  "version": "1.0.0",
+  "description": "RelayAPI distributed rate limiter prototype with scheduled quota overrides",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "server": "node src/server.js",
+    "test": "node test/cluster.test.js",
+    "harness": "node harness.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ioredis": "^5.4.1"
+  }
+}
