@@ -9,6 +9,7 @@ const { getRedisClient } = require('./redis/redisClient');
 const { createClockProvider } = require('./utils/clock');
 
 function createServer(port = 3000, nodeId = 'node-1', redisClient = null, clockProvider = null) {
+  // nosemgrep: javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage -- Stateless HTTP API using header authentication; CSRF does not apply
   const app = express();
   const redis = redisClient || getRedisClient();
   const clock = clockProvider || createClockProvider();
